@@ -413,7 +413,7 @@ class ArrayHelper
 		}
 		elseif (is_object($array))
 		{
-			$array->$key = $value;
+			$array->{$key} = $value;
 		}
 
 		return $array;
