@@ -202,16 +202,17 @@ class ArrayHelper
 	public static function pivotFromPrefix($prefix, $origin, $target = null)
 	{
 		$target = is_object($target) ? (object) $target : (array) $target;
-
+var_dump($target);
 		foreach ((array) $origin as $key => $row)
 		{
 			if (strpos($key, $prefix) === 0)
 			{
 				$key2 = Utf8String::substr($key, Utf8String::strlen($prefix));
+				var_dump($key2);
 				self::setValue($target, $key2, $row);
 			}
 		}
-
+var_dump($target);
 		return $target;
 	}
 
