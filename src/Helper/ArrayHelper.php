@@ -407,13 +407,16 @@ class ArrayHelper
 	 */
 	public static function setValue(&$array, $key, $value)
 	{
-		if (is_array($array))
+		if (!empty($key))
 		{
-			$array[$key] = $value;
-		}
-		elseif (is_object($array))
-		{
-			$array->{$key} = $value;
+			if (is_array($array))
+			{
+				$array[$key] = $value;
+			}
+			elseif (is_object($array))
+			{
+				$array->$key = $value;
+			}
 		}
 
 		return $array;
