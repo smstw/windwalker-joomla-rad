@@ -305,6 +305,8 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function testPivotFromPrefix($prefix, $origin, $target, $expected)
 	{
+		var_dump($expected, $origin, $target);
+
 		$this->assertEquals($expected, ArrayHelper::pivotFromPrefix($prefix, $origin, $target));
 	}
 
