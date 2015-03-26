@@ -206,8 +206,9 @@ var_dump($target);
 		foreach ((array) $origin as $key => $row)
 		{
 			if (strpos($key, $prefix) === 0)
-			{var_dump($key, $prefix, Utf8String::strlen($prefix));
-				$key2 = Utf8String::substr($key, Utf8String::strlen($prefix));
+			{
+				$key2 = Utf8String::substr($key, Utf8String::strlen($prefix), false);
+				var_dump($key2, $key, $prefix);
 				self::setValue($target, $key2, $row);
 			}
 		}
