@@ -130,24 +130,22 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function pivotFromPrefixDataProvider()
 	{
-		$data = array(
-			'prefix' => 'pr_',
-			'origin' => array(
-				'pr_foo'  => 123,
-				'pr_bar'  => 223,
-				'pre_bar' => 223,
-			),
-			'target' => null,
-			'expected' => array(
-				'foo' => 123,
-				'bar' => 223,
-			)
+		$prefix = 'pr_';
+		$origin = array(
+			'pr_foo'  => 123,
+			'pr_bar'  => 223,
+			'pre_bar' => 223,
+		);
+		$target = null;
+		$expected = array(
+			'foo' => 123,
+			'bar' => 223,
 		);
 
 		return array(
-			array($data['prefix'], $data['origin'],          $data['target'],          $data['expected']),
-			array($data['prefix'], (object) $data['origin'], $data['target'],          $data['expected']),
-			array($data['prefix'], (object) $data['origin'], (object) $data['target'], (object) $data['expected']),
+			array($prefix, $origin,          $target,          $expected),
+			array($prefix, (object) $origin, $target,          $expected),
+			array($prefix, (object) $origin, (object) $target, (object) $expected),
 		);
 	}
 
@@ -307,6 +305,8 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function testPivotFromPrefix($prefix, $origin, $target, $expected)
 	{
+		var_dump($expected, $origin, $target);
+
 		$this->assertEquals($expected, ArrayHelper::pivotFromPrefix($prefix, $origin, $target));
 	}
 
