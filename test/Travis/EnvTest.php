@@ -9,6 +9,7 @@
 namespace Windwalker\Test\Travis;
 
 use Windwalker\String\Utf8String;
+use Windwalker\Test\TestHelper;
 
 /**
  * Test class for Travis environment
@@ -21,6 +22,8 @@ class EnvTest extends \PHPUnit_Framework_TestCase
 
 		$uri  = \JUri::getInstance();
 		$root = $uri::root(true);
+
+		var_dump(TestHelper::getValue($uri, 'uri'));
 
 		// Get site route
 		$route = Utf8String::substr($uri->getPath(), Utf8String::strlen($root));
