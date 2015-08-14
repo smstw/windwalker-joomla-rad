@@ -9,6 +9,7 @@
 namespace Windwalker\Test\Model;
 
 use Windwalker\DI\Container;
+use Windwalker\Helper\DatabaseHelper;
 use Windwalker\Model\ListModel;
 use Windwalker\Model\Provider\GridProvider;
 use Windwalker\Test\Model\Stub\WindwalkerModelStubList;
@@ -28,18 +29,9 @@ class ListModelTest extends \PHPUnit_Framework_TestCase
 	 */
 	public static function setUpBeforeClass()
 	{
-		$db = \JFactory::getDbo();
-		$sqls = file_get_contents(__DIR__ . '/sql/install.listmodel.sql');
+		$sql = file_get_contents(__DIR__ . '/sql/install.listmodel.sql');
 
-		foreach ($db->splitSql($sqls) as $sql)
-		{
-			$sql = trim($sql);
-
-			if (!empty($sql))
-			{
-				$db->setQuery($sql)->execute();
-			}
-		}
+		DatabaseHelper::batchQuery($sql);
 
 		// Write filter.xml
 		$formPath = JPATH_BASE . '/components/com_stub/model/form/posts';
