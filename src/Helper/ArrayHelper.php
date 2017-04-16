@@ -109,7 +109,7 @@ class ArrayHelper extends \Windwalker\Utilities\ArrayHelper
 		{
 			if (strpos($key, $prefix) === 0)
 			{
-				$key2 = Utf8String::substr($key, Utf8String::strlen($prefix));
+				$key2 = Utf8String::substr($key, Utf8String::strlen($prefix), false);
 				self::setValue($target, $key2, $row);
 			}
 		}
